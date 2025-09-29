@@ -1,35 +1,51 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { Upload, Wallet, ArrowLeftRight } from "lucide-react"
+import Image from "next/image"
 
 const steps = [
   {
-    title: "Run Payroll in a Click",
+    title: "Upload & Pay",
     description:
-      "Upload a single CSV to pay your entire global team in one atomic transaction. Settle in seconds, not days.",
-    Icon: Upload,
+      "Simply upload your payroll CSV and pay your entire global team instantly with one click.",
   },
   {
-    title: "Activate Your Global Wallet",
+    title: "Receive Instantly",
     description:
-      "Employees and contractors receive funds instantly and can manage their money from our simple, beautiful mobile app.",
-    Icon: Wallet,
+      "Team members get funds immediately in their digital wallets—no waiting, no delays.",
   },
   {
-    title: "Send Money Freely",
+    title: "Auto-Invest",
     description:
-      "The P2P network allows anyone to send and request money like Venmo, using the power of near-zero fee transactions.",
-    Icon: ArrowLeftRight,
+      "Set your percentage and watch your savings grow automatically in high-yield DeFi protocols.",
+  },
+  {
+    title: "Transfer Seamlessly",
+    description:
+      "Send money anywhere, anytime with near-zero fees through our secure network.",
+  },
+  {
+    title: "Scale Effortlessly",
+    description:
+      "Grow your global workforce without payment complexity—Corridor handles everything.",
   },
 ]
 
 export function HowItWorks() {
   const [visible, setVisible] = useState<boolean[]>(Array(steps.length).fill(false))
-  const [activeStep, setActiveStep] = useState<number>(-1)
-  const itemsRef = useRef<(HTMLDivElement | null)[]>([])
+  const itemsRef = useRef<(HTMLLIElement | null)[]>([])
 
   useEffect(() => {
+    const reduce =
+      typeof window !== "undefined" &&
+      "matchMedia" in window &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+    if (reduce) {
+      setVisible(Array(steps.length).fill(true))
+      return
+    }
+
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -41,14 +57,10 @@ export function HowItWorks() {
               next[idx] = true
               return next
             })
-            // Trigger active step animation with delay
-            setTimeout(() => {
-              setActiveStep(idx)
-            }, idx * 800)
           }
         })
       },
-      { rootMargin: "0px 0px -20% 0px", threshold: 0.3 },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.2 },
     )
 
     itemsRef.current.forEach((el) => el && obs.observe(el))
@@ -59,68 +71,54 @@ export function HowItWorks() {
     <section aria-labelledby="how-heading">
       <div className="container mx-auto px-4 py-16 md:py-20">
         <div className="mx-auto max-w-2xl text-center">
+          <div className="mb-6 flex justify-center">
+            <Image
+              src="/corridor.png"
+              alt="Corridor"
+              width={64}
+              height={64}
+              className="h-16 w-16"
+            />
+          </div>
           <h2 id="how-heading" className="text-3xl font-semibold md:text-4xl">
-            {"How It Works"}
+            {"How Corridor Works"}
           </h2>
-          <p className="mt-3 text-muted-foreground">
-            {"A simple, three-step flow to get your team paid and moving money globally."}
+          <p className="mt-4 text-lg text-muted-foreground">
+            {"Five simple steps to revolutionize your global payments—fast, secure, and effortless."}
           </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {steps.map(({ title, description, Icon }, i) => (
-            <div
+        <ol role="list" className="relative mx-auto mt-12 max-w-4xl space-y-10">
+          <div aria-hidden="true" className="pointer-events-none absolute left-4 top-0 h-full w-px bg-gradient-to-b from-primary/50 via-primary/30 to-transparent" />
+          {steps.map(({ title, description }, i) => (
+            <li
               key={title}
-              ref={(el) => { itemsRef.current[i] = el }}
+              ref={(el) => {
+                itemsRef.current[i] = el
+              }}
               data-step-index={i}
               className={[
-                "group relative rounded-xl border border-border bg-card/60 p-6 backdrop-blur-sm transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]",
-                visible[i] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6",
-                activeStep === i ? "scale-105 shadow-2xl border-teal-500/50" : "hover:scale-102",
+                "relative pl-12 transition-all duration-500 ease-out",
+                visible[i] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2",
               ].join(" ")}
-              style={{ transitionDelay: `${i * 300}ms` }}
+              style={{ transitionDelay: `${i * 120}ms` }}
             >
-              {/* Animated number indicator */}
-              <div className="absolute -top-3 -left-3 flex h-8 w-8 items-center justify-center rounded-full bg-teal-500 text-white text-sm font-bold shadow-lg transition-all duration-800">
-                <span className={activeStep >= i ? "scale-100" : "scale-0"}>{i + 1}</span>
-              </div>
-              
-              {/* Connecting line for desktop */}
-              {i < steps.length - 1 && (
-                <div className="hidden md:block absolute top-8 -right-3 w-6 h-0.5 bg-gradient-to-r from-teal-500/50 to-transparent">
-                  <div 
-                    className={[
-                      "h-full bg-teal-500 transition-all duration-1000 delay-300",
-                      activeStep > i ? "w-full" : "w-0"
-                    ].join(" ")}
-                  ></div>
-                </div>
-              )}
+              <span
+                aria-hidden="true"
+                className="absolute left-0 inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground shadow-lg ring-4 ring-primary/20"
+              >
+                {i + 1}
+              </span>
 
-              <div className="flex items-center gap-3">
-                <span className={[
-                  "flex h-10 w-10 items-center justify-center rounded-lg transition-all duration-800",
-                  activeStep === i ? "bg-teal-500 text-white scale-110" : "bg-primary/10 text-primary"
-                ].join(" ")}>
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <h3 className="text-lg font-semibold">{title}</h3>
+              <div className="min-h-[4rem]">
+                <h3 className="text-xl font-bold leading-tight text-foreground">{title}</h3>
+                <p className="mt-3 text-base leading-relaxed text-muted-foreground">{description}</p>
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{description}</p>
-              
-              {/* Animated progress indicator */}
-              <div className="mt-4 h-1 bg-border/30 rounded-full overflow-hidden">
-                <div 
-                  className={[
-                    "h-full bg-gradient-to-r from-teal-500 to-teal-300 transition-all duration-1000",
-                    activeStep >= i ? "w-full" : "w-0"
-                  ].join(" ")}
-                  style={{ transitionDelay: `${i * 500 + 800}ms` }}
-                ></div>
-              </div>
-            </div>
+
+              {i < steps.length - 1 && <div aria-hidden="true" className="mt-10 h-px w-full bg-border/50" />}
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   )

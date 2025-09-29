@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
-import { ShieldCheck, Cog, Network, Rows3 } from "lucide-react"
+import { ShieldCheck, TrendingUp, Network, Rows3 } from "lucide-react"
 
 const features = [
   {
@@ -25,10 +25,10 @@ const features = [
     imageSrc: "/usdc.png",
   },
   {
-    title: "Developer API",
-    description: "Integrate Corridor's payment rails directly into your own products and services.",
-    Icon: Cog,
-    imageSrc: "/developer.png",
+    title: "Auto-Invest Savings",
+    description: "Automatically invest a portion of every paycheck into high-yield DeFi protocols. You set the percentage, and Corridor handles the rest. Put your savings to work the moment you get paid.",
+    Icon: TrendingUp,
+    imageSrc: "/investment.png",
   },
 ]
 

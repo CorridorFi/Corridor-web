@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: 'Corridor',
   description: 'Global Payroll, Instant P2P. Unified on Solana.',
   generator: 'corridor.app',
+  icons: {
+    icon: '/favicon.ico'
+  }
 }
 
 export default function RootLayout({
