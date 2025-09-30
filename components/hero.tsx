@@ -9,11 +9,11 @@ export function Hero() {
       <div className="container mx-auto px-4 py-16 md:py-24">
         <div className="mx-auto max-w-3xl text-center">
           <h1 id="hero-heading" className="text-pretty text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
-            {"Global Payroll, Instant P2P. Unified on Solana."}
+            {"Pay Your Team. Grow Your Wealth. Automatically."}
           </h1>
           <p className="mt-4 text-balance text-base leading-relaxed text-muted-foreground md:text-lg">
             {
-              "Corridor is the single platform for businesses to run lightning-fast payroll and for individuals to send and receive money frictionlessly across the globe."
+              "The only payroll platform that automatically invests your earnings in high-yield DeFi protocols. Pay globally, earn passively, scale effortlessly—all powered by Solana."
             }
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

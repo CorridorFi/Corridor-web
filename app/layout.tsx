@@ -6,7 +6,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Corridor',
-  description: 'Global Payroll, Instant P2P. Unified on Solana.',
+  description: 'Pay Your Team. Grow Your Wealth. Automatically. The only payroll platform with built-in DeFi investing.',
   generator: 'corridor.app',
   icons: {
     icon: '/favicon.ico'
