@@ -10,11 +10,11 @@ export function Hero() {
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="mx-auto max-w-3xl text-center">
           <h1 id="hero-heading" className="text-pretty text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
-            {"Pay Your Team. Grow Your Wealth. Automatically."}
+            {"Payroll Made Simple. Payments Made Easy."}
           </h1>
           <p className="mt-4 text-balance text-base leading-relaxed text-muted-foreground md:text-lg">
             {
-              "The only payroll platform that automatically invests your earnings in high-yield DeFi protocols. Pay globally, earn passively, scale effortlessly—all powered by Solana."
+              "Instant payroll, easy team payments, and auto-investing — built for the new economy on Solana."
             }
           </p>
           <div className="mt-8 flex justify-center">
