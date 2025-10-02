@@ -16,7 +16,6 @@ export function FinalCta() {
             }
           </p>
           <div className="mt-8 flex justify-center">
-            <Link href="/dashboard">
               <button className="group relative px-6 py-2.5 text-sm font-semibold text-slate-900 bg-white border-2 border-slate-900 rounded-full overflow-hidden transition-all duration-300 hover:text-white hover:-translate-y-1 active:translate-y-0 shadow-[0_0_0_0_rgba(20,184,166,0)] hover:shadow-[0_12px_24px_-4px_rgba(20,184,166,0.4)]">
                 {/* Animated background on hover */}
                 <span className="absolute inset-0 bg-gradient-to-r from-teal-500 via-teal-600 to-cyan-500 translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-out"></span>
@@ -28,7 +27,6 @@ export function FinalCta() {
                   </svg>
                 </span>
               </button>
-            </Link>
           </div>
         </div>
       </div>
