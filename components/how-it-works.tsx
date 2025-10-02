@@ -5,14 +5,19 @@ import Image from "next/image"
 
 const steps = [
   {
-    title: "Upload & Pay",
+    title: "Lock & Select Stream",
     description:
-      "Simply upload your payroll CSV and pay your entire global team instantly with one click.",
+      "Employer locks funds in a smart contract and selects the payment stream: monthly, daily, or project-based—fully automated, no CSV uploads needed.",
   },
   {
-    title: "Receive Instantly",
+    title: "Smart Contract Assurance",
     description:
-      "Team members get funds immediately in their digital wallets—no waiting, no delays.",
+      "Employees are guaranteed payment as funds are securely locked in the on-chain program. No rug pulls, no uncertainty—your earnings are protected.",
+  },
+  {
+    title: "Auto-Distribute",
+    description:
+      "Funds automatically stream to employees based on the selected schedule. Sit back and let the on-chain processes handle everything.",
   },
   {
     title: "Auto-Invest",
@@ -20,14 +25,9 @@ const steps = [
       "Set your percentage and watch your savings grow automatically in high-yield DeFi protocols.",
   },
   {
-    title: "Transfer Seamlessly",
+    title: "Automated Compliance",
     description:
-      "Send money anywhere, anytime with near-zero fees through our secure network.",
-  },
-  {
-    title: "Scale Effortlessly",
-    description:
-      "Grow your global workforce without payment complexity—Corridor handles everything.",
+      "Corridor continuously monitors every transfer, ensures travel rule compliance, and prepares audit-ready exports for tax filings.",
   },
 ]
 
