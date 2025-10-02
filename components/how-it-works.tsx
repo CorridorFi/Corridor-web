@@ -69,7 +69,7 @@ export function HowItWorks() {
 
   return (
     <section aria-labelledby="how-heading">
-      <div className="container mx-auto px-4 py-16 md:py-20">
+      <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="mx-auto max-w-2xl text-center">
           <div className="mb-6 flex justify-center">
             <Image

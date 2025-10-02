@@ -9,7 +9,7 @@ const features = [
     title: "Atomic Bulk Payments",
     description: "Pay 1 or 1,000 people in a single, secure transaction for a fraction of a penny.",
     Icon: Rows3,
-    imageSrc: "/payment.png",
+    imageSrc: "/download.jpg",
   },
   {
     title: "Non-Custodial Security",
@@ -58,16 +58,16 @@ export function FeatureGrid() {
   }, [])
 
   return (
-    <section aria-labelledby="features-heading">
-      <div className="container mx-auto px-4 py-16 md:py-20">
-        <div className="mx-auto max-w-2xl text-center">
+    <section aria-labelledby="features-heading" className="overflow-x-hidden">
+      <div className="container mx-auto px-2 md:px-3 py-12 md:py-16">
+        <div className="mx-auto max-w-2xl text-center px-2">
           <h2 id="features-heading" className="text-3xl font-semibold md:text-4xl">
             {"Key Features"}
           </h2>
-          <p className="mt-3 text-muted-foreground">{"What makes Corridor fast, secure, and developer-friendly."}</p>
+          <p className="mt-3 text-muted-foreground">{"What makes Corridor fast, secure, and user-friendly."}</p>
         </div>
 
-        <div className="mt-10 space-y-12">
+        <div className="mt-10 space-y-8 max-w-5xl mx-auto px-1">
           {features.map(({ title, description, imageSrc }, i) => {
             return (
               <div
@@ -75,18 +75,23 @@ export function FeatureGrid() {
                 ref={(el) => { rowRefs.current[i] = el }}
                 data-row-index={i}
                 className={[
-                  "relative h-80 md:h-96 w-full rounded-xl overflow-hidden transition-all duration-700 ease-out",
-                  visible[i] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6",
+                  "relative h-64 md:h-72 w-full rounded-xl overflow-hidden transition-all duration-700 ease-out",
+                  visible[i] ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-6 scale-110",
                 ].join(" ")}
                 style={{ transitionDelay: `${i * 140}ms` }}
               >
                 {/* Background Image - Full Coverage */}
-                <div className="absolute inset-0 w-full h-full">
+                <div className={[
+                  "absolute inset-0 w-full h-full transition-transform duration-700 ease-out",
+                  visible[i] ? "scale-100" : "scale-125"
+                ].join(" ")}
+                style={{ transitionDelay: `${i * 140}ms` }}
+                >
                   <Image
                     src={imageSrc}
                     alt={`${title} illustration`}
                     fill
-                    className="object-contain opacity-40 scale-110"
+                    className="object-contain opacity-40"
                     sizes="100vw"
                   />
                 </div>
@@ -102,13 +107,16 @@ export function FeatureGrid() {
                 {/* Text Content - Positioned on Top */}
                 <div className={[
                   "relative z-10 h-full flex items-center",
-                  i % 2 === 0 ? "justify-start pl-8 md:pl-12" : "justify-end pr-8 md:pr-12"
+                  i % 2 === 0 ? "justify-start pl-3 md:pl-4" : "justify-end pr-3 md:pr-4"
                 ].join(" ")}>
                   <div className={[
-                    "max-w-md p-6 rounded-xl backdrop-blur-sm",
+                    "max-w-xs md:max-w-sm p-3 md:p-4 rounded-xl backdrop-blur-sm transition-all duration-700 ease-out",
                     "bg-background/60 border border-border/50 shadow-lg",
-                    i % 2 === 0 ? "text-left" : "text-right"
-                  ].join(" ")}>
+                    i % 2 === 0 ? "text-left" : "text-right",
+                    visible[i] ? "scale-100 opacity-100" : "scale-110 opacity-0"
+                  ].join(" ")}
+                  style={{ transitionDelay: `${i * 140 + 100}ms` }}
+                  >
                     <div className={[
                       "flex items-center gap-3",
                       i % 2 === 0 ? "justify-start" : "justify-end"
@@ -121,9 +129,12 @@ export function FeatureGrid() {
 
                 {/* Foreground Image - Overlapping */}
                 <div className={[
-                  "absolute top-1/2 -translate-y-1/2 w-2/3 h-2/3",
-                  i % 2 === 0 ? "right-4 md:right-8" : "left-4 md:left-8"
-                ].join(" ")}>
+                  "absolute top-1/2 -translate-y-1/2 w-4/5 md:w-2/3 h-4/5 md:h-2/3 transition-all duration-500 ease-out",
+                  i % 2 === 0 ? "right-0 md:right-2" : "left-0 md:left-2",
+                  visible[i] ? "scale-100 opacity-100" : "scale-115 opacity-0"
+                ].join(" ")}
+                style={{ transitionDelay: `${i * 140 + 50}ms` }}
+                >
                   <div className="relative w-full h-full">
                     <Image
                       src={imageSrc}
