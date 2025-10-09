@@ -1,5 +1,8 @@
+'use client'
+
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
+import { PrivyProvider } from '@privy-io/react-auth'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -17,11 +20,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
+    <PrivyProvider appId={process.env.PRIVY_APP_ID!} clientId={process.env.PRIVY_CLIENT_ID!} >
     <html lang="en">
       <body className="font-sans">
         {children}
         <Analytics />
       </body>
     </html>
+    </PrivyProvider>
   )
 }
