@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
@@ -9,7 +9,7 @@ const features = [
     title: "Atomic Bulk Payments",
     description: "Pay 1 or 1,000 people in a single, secure transaction for a fraction of a penny.",
     Icon: Rows3,
-    imageSrc: "/download.jpg",
+    imageSrc: "/process.png",
   },
   {
     title: "Non-Custodial Security",
@@ -33,121 +33,159 @@ const features = [
 ]
 
 export function FeatureGrid() {
-  const [visible, setVisible] = useState<boolean[]>(Array(features.length).fill(false))
-  const rowRefs = useRef<(HTMLDivElement | null)[]>([])
+  const [activeIndex, setActiveIndex] = useState(0)
+  const stepRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          const idx = Number(entry.target.getAttribute("data-row-index"))
           if (entry.isIntersecting) {
-            setVisible((prev) => {
-              if (prev[idx]) return prev
-              const next = [...prev]
-              next[idx] = true
-              return next
-            })
+            const idx = Number(entry.target.getAttribute("data-step-index"))
+            setActiveIndex(idx)
           }
         })
       },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0.2 },
+      { rootMargin: "-50% 0px -50% 0px", threshold: 0 },
     )
-    rowRefs.current.forEach((el) => el && obs.observe(el))
+    stepRefs.current.forEach((el) => el && obs.observe(el))
     return () => obs.disconnect()
   }, [])
 
   return (
-    <section aria-labelledby="features-heading" className="overflow-x-hidden">
-      <div className="container mx-auto px-2 md:px-3 py-12 md:py-16">
-        <div className="mx-auto max-w-2xl text-center px-2">
-          <h2 id="features-heading" className="text-3xl font-semibold md:text-4xl">
-            {"Key Features"}
-          </h2>
-          <p className="mt-3 text-muted-foreground">{"What makes Corridor fast, secure, and user-friendly."}</p>
-        </div>
+    <section aria-labelledby="features-heading" className="relative h-screen">
+      {/* Sticky Title at Top - Visible within section only */}
+      <div className="sticky top-0 left-0 right-0 z-50 pt-8 pb-6 text-center pointer-events-none bg-background/80 backdrop-blur-sm">
+        <h2 id="features-heading" className="text-3xl font-semibold md:text-4xl">
+          {"Key Features"}
+        </h2>
+        <p className="mt-2 text-sm md:text-base text-muted-foreground">
+          {"What makes Corridor fast, secure, and user-friendly."}
+        </p>
+      </div>
 
-        <div className="mt-10 space-y-8 max-w-5xl mx-auto px-1">
+      {/* Snap Container with Hidden Scrollbar */}
+      <div className="snap-y snap-mandatory overflow-y-auto h-full scrollbar-hide absolute inset-0">
+        {/* Desktop: Full-screen feature slides with snap scrolling */}
+        <div className="hidden md:block">
           {features.map(({ title, description, imageSrc }, i) => {
+            const isOdd = i % 2 === 0
+            const isActive = activeIndex === i
+            
             return (
               <div
-                key={title}
-                ref={(el) => { rowRefs.current[i] = el }}
-                data-row-index={i}
-                className={[
-                  "relative h-64 md:h-72 w-full rounded-xl overflow-hidden transition-all duration-700 ease-out",
-                  visible[i] ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-6 scale-110",
-                ].join(" ")}
-                style={{ transitionDelay: `${i * 140}ms` }}
+                key={`feature-${i}`}
+                ref={(el) => { stepRefs.current[i] = el }}
+                data-step-index={i}
+                className="snap-start h-screen w-full"
               >
-                {/* Background Image - Full Coverage */}
-                <div className={[
-                  "absolute inset-0 w-full h-full transition-transform duration-700 ease-out",
-                  visible[i] ? "scale-100" : "scale-125"
-                ].join(" ")}
-                style={{ transitionDelay: `${i * 140}ms` }}
-                >
-                  <Image
-                    src={imageSrc}
-                    alt={`${title} illustration`}
-                    fill
-                    className="object-contain opacity-40"
-                    sizes="100vw"
-                  />
-                </div>
-
-                {/* Gradient Overlay for Text Readability */}
-                <div className={[
-                  "absolute inset-0 bg-gradient-to-r",
-                  i % 2 === 0 
-                    ? "from-background/95 via-background/80 to-transparent" 
-                    : "from-transparent via-background/80 to-background/95"
-                ].join(" ")}></div>
-
-                {/* Text Content - Positioned on Top */}
-                <div className={[
-                  "relative z-10 h-full flex items-center",
-                  i % 2 === 0 ? "justify-start pl-3 md:pl-4" : "justify-end pr-3 md:pr-4"
-                ].join(" ")}>
-                  <div className={[
-                    "max-w-xs md:max-w-sm p-3 md:p-4 rounded-xl backdrop-blur-sm transition-all duration-700 ease-out",
-                    "bg-background/60 border border-border/50 shadow-lg",
-                    i % 2 === 0 ? "text-left" : "text-right",
-                    visible[i] ? "scale-100 opacity-100" : "scale-110 opacity-0"
-                  ].join(" ")}
-                  style={{ transitionDelay: `${i * 140 + 100}ms` }}
-                  >
-                    <div className={[
-                      "flex items-center gap-3",
-                      i % 2 === 0 ? "justify-start" : "justify-end"
-                    ].join(" ")}>
-                      <h3 className="text-lg font-semibold">{title}</h3>
-                    </div>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{description}</p>
-                  </div>
-                </div>
-
-                {/* Foreground Image - Overlapping */}
-                <div className={[
-                  "absolute top-1/2 -translate-y-1/2 w-4/5 md:w-2/3 h-4/5 md:h-2/3 transition-all duration-500 ease-out",
-                  i % 2 === 0 ? "right-0 md:right-2" : "left-0 md:left-2",
-                  visible[i] ? "scale-100 opacity-100" : "scale-115 opacity-0"
-                ].join(" ")}
-                style={{ transitionDelay: `${i * 140 + 50}ms` }}
-                >
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={imageSrc}
-                      alt={`${title} illustration`}
-                      fill
-                      className="object-contain drop-shadow-2xl"
-                      sizes="66vw"
-                    />
-                  </div>
+                <div className="h-full max-w-7xl mx-auto grid grid-cols-2 gap-8 md:gap-12 items-center px-6 md:px-8 pt-32">
+                  {/* Content positioned based on isOdd */}
+                  {isOdd ? (
+                    <>
+                      {/* Text on left */}
+                      <div className="flex items-center justify-end">
+                        <div 
+                          className="max-w-md transition-all duration-700 ease-out"
+                          style={{
+                            opacity: isActive ? 1 : 0.4,
+                            transform: isActive ? 'translateX(0) scale(1)' : 'translateX(-20px) scale(0.96)'
+                          }}
+                        >
+                          <h3 className="text-3xl md:text-4xl font-semibold mb-6">{title}</h3>
+                          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                            {description}
+                          </p>
+                        </div>
+                      </div>
+                      
+                      {/* Image on right */}
+                      <div className="flex items-center justify-center">
+                        <div 
+                          className="relative w-full h-[70vh] transition-all duration-700 ease-out"
+                          style={{
+                            opacity: isActive ? 1 : 0.4,
+                            transform: isActive ? 'scale(1)' : 'scale(0.92)'
+                          }}
+                        >
+                          <Image
+                            src={imageSrc}
+                            alt={`${title} illustration`}
+                            fill
+                            className="object-contain drop-shadow-2xl"
+                            sizes="45vw"
+                            priority={i === 0}
+                          />
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {/* Image on left */}
+                      <div className="flex items-center justify-center">
+                        <div 
+                          className="relative w-full h-[70vh] transition-all duration-700 ease-out"
+                          style={{
+                            opacity: isActive ? 1 : 0.4,
+                            transform: isActive ? 'scale(1)' : 'scale(0.92)'
+                          }}
+                        >
+                          <Image
+                            src={imageSrc}
+                            alt={`${title} illustration`}
+                            fill
+                            className="object-contain drop-shadow-2xl"
+                            sizes="45vw"
+                          />
+                        </div>
+                      </div>
+                      
+                      {/* Text on right */}
+                      <div className="flex items-center justify-start">
+                        <div 
+                          className="max-w-md transition-all duration-700 ease-out"
+                          style={{
+                            opacity: isActive ? 1 : 0.4,
+                            transform: isActive ? 'translateX(0) scale(1)' : 'translateX(20px) scale(0.96)'
+                          }}
+                        >
+                          <h3 className="text-3xl md:text-4xl font-semibold mb-6">{title}</h3>
+                          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                            {description}
+                          </p>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             )
           })}
+        </div>
+
+        {/* Mobile: Traditional stacked layout */}
+        <div className="md:hidden">
+          {features.map(({ title, description, imageSrc }, i) => (
+            <div key={`mobile-${i}`} className="snap-start h-screen flex flex-col items-center justify-center px-6 py-12 pt-32">
+              <div className="space-y-8 max-w-lg">
+                <div className="text-center">
+                  <h3 className="text-2xl md:text-3xl font-semibold mb-4">{title}</h3>
+                  <p className="text-base text-muted-foreground leading-relaxed">
+                    {description}
+                  </p>
+                </div>
+                <div className="relative w-full h-80">
+                  <Image
+                    src={imageSrc}
+                    alt={`${title} illustration`}
+                    fill
+                    className="object-contain"
+                    sizes="100vw"
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

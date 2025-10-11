@@ -1,7 +1,5 @@
 "use client"
 
-import Link from "next/link"
-
 export function FinalCta() {
   return (
     <section className="border-t border-border bg-muted/30" aria-labelledby="final-cta-heading">
@@ -16,17 +14,14 @@ export function FinalCta() {
             }
           </p>
           <div className="mt-8 flex justify-center">
-              <button className="group relative px-6 py-2.5 text-sm font-semibold text-slate-900 bg-white border-2 border-slate-900 rounded-full overflow-hidden transition-all duration-300 hover:text-white hover:-translate-y-1 active:translate-y-0 shadow-[0_0_0_0_rgba(20,184,166,0)] hover:shadow-[0_12px_24px_-4px_rgba(20,184,166,0.4)]">
-                {/* Animated background on hover */}
-                <span className="absolute inset-0 bg-gradient-to-r from-teal-500 via-teal-600 to-cyan-500 translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-out"></span>
-                {/* Button text */}
-                <span className="relative z-10 flex items-center gap-2">
-                  {"Get Started"}
-                  <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </span>
-              </button>
+            <button className="group relative px-6 py-2.5 text-sm font-semibold border-2 border-foreground rounded-full transition-all duration-300 hover:scale-105 active:scale-100 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100">
+              <span className="flex items-center gap-2 text-foreground group-hover:bg-gradient-to-r group-hover:from-teal-500 group-hover:via-teal-600 group-hover:to-cyan-500 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                {"Launching Soon"}
+                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:stroke-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
+            </button>
           </div>
         </div>
       </div>

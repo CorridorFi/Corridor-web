@@ -1,39 +1,51 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
+import { Lock, Shield, Zap, TrendingUp, FileCheck, ArrowUp } from "lucide-react"
 
 const steps = [
   {
     title: "Lock & Select Stream",
     description:
-      "Employer locks funds in a smart contract and selects the payment stream: monthly, daily, or project-based—fully automated, no CSV uploads needed.",
+      "Employer locks funds in a smart contract and selects the payment stream: monthly, daily, or project-based—fully automated.",
+    icon: Lock,
+    milestone: "$10K",
   },
   {
     title: "Smart Contract Assurance",
     description:
-      "Employees are guaranteed payment as funds are securely locked in the on-chain program. No rug pulls, no uncertainty—your earnings are protected.",
+      "Employees are guaranteed payment as funds are securely locked. No rug pulls, no uncertainty—your earnings are protected.",
+    icon: Shield,
+    milestone: "$25K",
   },
   {
     title: "Auto-Distribute",
     description:
       "Funds automatically stream to employees based on the selected schedule. Sit back and let the on-chain processes handle everything.",
+    icon: Zap,
+    milestone: "$50K",
   },
   {
     title: "Auto-Invest",
     description:
       "Set your percentage and watch your savings grow automatically in high-yield DeFi protocols.",
+    icon: TrendingUp,
+    milestone: "$100K",
   },
   {
     title: "Automated Compliance",
     description:
-      "Corridor continuously monitors every transfer, ensures travel rule compliance, and prepares audit-ready exports for tax filings.",
+      "Corridor continuously monitors every transfer, ensures travel rule compliance, and prepares audit-ready exports.",
+    icon: FileCheck,
+    milestone: "$250K",
   },
 ]
 
-export function HowItWorks() {
+export default function HowItWorks() {
   const [visible, setVisible] = useState<boolean[]>(Array(steps.length).fill(false))
-  const itemsRef = useRef<(HTMLLIElement | null)[]>([])
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const itemsRef = useRef<(HTMLDivElement | null)[]>([])
+  const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const reduce =
@@ -60,7 +72,7 @@ export function HowItWorks() {
           }
         })
       },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0.2 },
+      { rootMargin: "0px 0px -20% 0px", threshold: 0.2 },
     )
 
     itemsRef.current.forEach((el) => el && obs.observe(el))
@@ -68,57 +80,148 @@ export function HowItWorks() {
   }, [])
 
   return (
-    <section aria-labelledby="how-heading">
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="mx-auto max-w-2xl text-center">
-          <div className="mb-6 flex justify-center">
-            <Image
-              src="/corridor.png"
-              alt="Corridor"
-              width={64}
-              height={64}
-              className="h-16 w-16"
-            />
-          </div>
-          <h2 id="how-heading" className="text-3xl font-semibold md:text-4xl">
-            {"How Corridor Works"}
+    <section 
+      ref={sectionRef}
+      aria-labelledby="how-heading" 
+      className="relative py-20 md:py-28 bg-white"
+    >
+      <div className="container mx-auto px-6 md:px-8 relative z-10">
+        {/* Header */}
+        <div className="mx-auto max-w-4xl text-center mb-16 md:mb-20">
+          <h2 id="how-heading" className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            How Corridor Works
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            {"Five simple steps to revolutionize your global payments—fast, secure, and effortless."}
+          <p className="text-base md:text-lg text-gray-600">
+            Five simple steps to revolutionize your global payments
           </p>
         </div>
 
-        <ol role="list" className="relative mx-auto mt-12 max-w-4xl space-y-10">
-          <div aria-hidden="true" className="pointer-events-none absolute left-4 top-0 h-full w-px bg-gradient-to-b from-primary/50 via-primary/30 to-transparent" />
-          {steps.map(({ title, description }, i) => (
-            <li
-              key={title}
-              ref={(el) => {
-                itemsRef.current[i] = el
-              }}
-              data-step-index={i}
-              className={[
-                "relative pl-12 transition-all duration-500 ease-out",
-                visible[i] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2",
-              ].join(" ")}
-              style={{ transitionDelay: `${i * 120}ms` }}
-            >
-              <span
-                aria-hidden="true"
-                className="absolute left-0 inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground shadow-lg ring-4 ring-primary/20"
+        {/* Staircase Container */}
+        <div className="relative max-w-[1400px] mx-auto min-h-[900px] md:min-h-[600px]">
+          
+          {/* Staircase Steps */}
+          {steps.map((step, i) => {
+            const isHovered = hoveredIndex === i
+            
+            return (
+              <div
+                key={step.title}
+                ref={(el) => { itemsRef.current[i] = el }}
+                data-step-index={i}
+                onMouseEnter={() => setHoveredIndex(i)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className={[
+                  "absolute cursor-pointer",
+                  visible[i] ? "opacity-100" : "opacity-0 translate-y-8",
+                ].join(" ")}
+                style={{
+                  left: `${i * 17}%`,
+                  bottom: `${i * 15}%`,
+                  transitionDelay: visible[i] ? `${i * 100}ms` : '0ms',
+                  width: 'clamp(280px, 26vw, 360px)',
+                  zIndex: isHovered ? 50 : i + 1,
+                  transition: 'opacity 0.7s ease-out, transform 0.7s ease-out, z-index 0s',
+                }}
               >
-                {i + 1}
-              </span>
+                {/* Connecting line to next step */}
+                {i < steps.length - 1 && visible[i + 1] && (
+                  <div className="hidden md:block absolute left-[calc(100%-15px)] bottom-[calc(100%-15px)] w-[100px] h-[100px] pointer-events-none">
+                    <svg 
+                      className="w-full h-full" 
+                      viewBox="0 0 100 100"
+                    >
+                      <path
+                        d="M 15 85 Q 50 50, 85 15"
+                        fill="none"
+                        stroke="#14b8a6"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        className="transition-all duration-700"
+                        style={{
+                          strokeDasharray: "200",
+                          strokeDashoffset: visible[i + 1] ? 0 : 200,
+                        }}
+                      />
+                    </svg>
+                  </div>
+                )}
 
-              <div className="min-h-[4rem]">
-                <h3 className="text-xl font-bold leading-tight text-foreground">{title}</h3>
-                <p className="mt-3 text-base leading-relaxed text-muted-foreground">{description}</p>
+                {/* Minimal Card */}
+                <div 
+                  className={[
+                    "relative bg-white rounded-lg p-6 md:p-7 border border-gray-200",
+                  ].join(" ")}
+                  style={{
+                    transform: isHovered ? 'translateY(-12px) scale(1.02)' : 'translateY(0) scale(1)',
+                    boxShadow: isHovered 
+                      ? '0 24px 48px rgba(0,0,0,0.08), 0 0 0 1px rgba(20,184,166,0.15)' 
+                      : '0 2px 12px rgba(0,0,0,0.04)',
+                    transition: 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease-out, border-color 0.4s ease-out',
+                    zIndex: isHovered ? 51 : 'auto',
+                    borderColor: isHovered ? 'rgba(20,184,166,0.2)' : 'rgb(229, 231, 235)',
+                  }}
+                >
+                  {/* Subtle teal glow on hover */}
+                  <div 
+                    className="absolute -inset-0.5 bg-teal-500/10 rounded-lg blur-sm -z-10 transition-opacity duration-400"
+                    style={{ opacity: isHovered ? 1 : 0 }}
+                  />
+
+                  {/* Step number - minimal */}
+                  <div className="mb-5 flex items-center gap-3">
+                    <div 
+                      className="w-9 h-9 rounded-lg bg-gray-300 flex items-center justify-center text-teal-500 font-bold text-base flex-shrink-0 transition-transform duration-400 ease-out"
+                      style={{
+                        transform: isHovered ? 'scale(1.1) rotate(5deg)' : 'scale(1) rotate(0deg)'
+                      }}
+                    >
+                      {i + 1}
+                    </div>
+                    <div 
+                      className="h-px bg-gray-200 transition-all duration-400"
+                      style={{
+                        width: '100%',
+                        backgroundColor: isHovered ? 'rgba(20,184,166,0.3)' : 'rgb(229, 231, 235)'
+                      }}
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <h3 
+                    className="text-lg md:text-xl font-semibold text-gray-900 mb-2.5 leading-snug transition-colors duration-300"
+                    style={{
+                      color: isHovered ? 'rgb(17, 24, 39)' : 'rgb(17, 24, 39)'
+                    }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p 
+                    className="text-sm md:text-base leading-relaxed transition-colors duration-300"
+                    style={{
+                      color: isHovered ? 'rgb(55, 65, 81)' : 'rgb(75, 85, 99)'
+                    }}
+                  >
+                    {step.description}
+                  </p>
+                </div>
               </div>
+            )
+          })}
+        </div>
 
-              {i < steps.length - 1 && <div aria-hidden="true" className="mt-10 h-px w-full bg-border/50" />}
-            </li>
+        {/* Bottom progress */}
+        <div className="mt-16 flex items-center justify-center gap-2">
+          {steps.map((_, i) => (
+            <div 
+              key={i}
+              className={[
+                "h-1 rounded-full transition-all duration-700",
+                visible[i] ? "w-10 bg-teal-500" : "w-1 bg-gray-300"
+              ].join(" ")}
+              style={{ transitionDelay: `${i * 100}ms` }}
+            />
           ))}
-        </ol>
+        </div>
       </div>
     </section>
   )
