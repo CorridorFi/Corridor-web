@@ -131,7 +131,7 @@ export function Payroll() {
           <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-white/50 shadow-xl p-6">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-semibold text-slate-900">Payroll Overview</h3>
-              <Wallet className="h-6 w-6 text-teal-600" />
+              <Wallet className="h-6 w-6 text-blue-600" />
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -144,7 +144,7 @@ export function Payroll() {
                 </div>
               </div>
               <div className="bg-slate-50/80 rounded-xl p-6">
-                <div className="text-3xl font-bold text-teal-600 mb-2">{employees.length}</div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">{employees.length}</div>
                 <div className="text-sm text-slate-600 mb-4">Active employees on payroll</div>
                 <div className="text-xs text-blue-600 flex items-center">
                   <Users className="h-3 w-3 mr-1" />
@@ -191,7 +191,7 @@ export function Payroll() {
                       <TableCell>
                         <div className="flex items-center gap-3">
                           <Avatar className="h-8 w-8">
-                            <AvatarFallback className="bg-teal-100 text-teal-700 text-xs">
+                            <AvatarFallback className="bg-blue-100 text-blue-700 text-xs">
                               {employee.avatar}
                             </AvatarFallback>
                           </Avatar>
@@ -248,7 +248,7 @@ export function Payroll() {
                             <StopCircle className="h-4 w-4 text-red-600" />
                           </Button>
                           <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
-                            <Gift className="h-4 w-4 text-teal-600" />
+                            <Gift className="h-4 w-4 text-blue-600" />
                           </Button>
                           <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
                             <MoreHorizontal className="h-4 w-4" />
@@ -266,7 +266,7 @@ export function Payroll() {
           <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-white/50 shadow-xl p-6">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-semibold text-slate-900">Add Employee</h3>
-              <Users className="h-6 w-6 text-teal-600" />
+              <Users className="h-6 w-6 text-blue-600" />
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -338,7 +338,7 @@ export function Payroll() {
           <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-white/50 shadow-xl p-6">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-semibold text-slate-900">Reports & Data</h3>
-              <FileText className="h-6 w-6 text-teal-600" />
+              <FileText className="h-6 w-6 text-blue-600" />
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

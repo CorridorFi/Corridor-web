@@ -17,8 +17,8 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
-        neo: "relative rounded-full border border-border/30 bg-background text-foreground transition-all duration-300 ease-out shadow-[6px_6px_0_0_rgb(20_184_166)] hover:shadow-[0_0_0_0_transparent] hover:translate-x-[6px] hover:translate-y-[6px] hover:bg-teal-500 hover:text-white active:scale-95",
-        neoOutline: "relative rounded-full border border-border/50 bg-background/80 text-foreground backdrop-blur-sm transition-all duration-300 ease-out shadow-[4px_4px_0_0_rgb(94_234_212)] hover:shadow-[0_0_0_0_transparent] hover:translate-x-[4px] hover:translate-y-[4px] hover:bg-teal-100 hover:border-teal-300 active:scale-95",
+        neo: "relative rounded-full border border-border/30 bg-background text-foreground transition-all duration-300 ease-out shadow-[6px_6px_0_0_#0f44e1] hover:shadow-[0_0_0_0_transparent] hover:translate-x-[6px] hover:translate-y-[6px] hover:bg-[#0f44e1] hover:text-white active:scale-95",
+        neoOutline: "relative rounded-full border border-border/50 bg-background/80 text-foreground backdrop-blur-sm transition-all duration-300 ease-out shadow-[4px_4px_0_0_#3b82f6] hover:shadow-[0_0_0_0_transparent] hover:translate-x-[4px] hover:translate-y-[4px] hover:bg-blue-100 hover:border-blue-300 active:scale-95",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",

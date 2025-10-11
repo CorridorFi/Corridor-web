@@ -159,14 +159,14 @@ export function ModernSidebar({ collapsed = false, onToggleCollapse }: ModernSid
                     "w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-left transition-all duration-200 group",
                     "hover:bg-slate-50/80 hover:shadow-sm",
                     itemIsActive 
-                      ? "text-teal-700" 
+                      ? "text-blue-700" 
                       : "text-slate-600 hover:text-slate-900",
                     collapsed && "justify-center px-2"
                   )}
                 >
                   <Icon className={cn(
                     "flex-shrink-0 transition-colors duration-200",
-                    itemIsActive ? "text-teal-600" : "text-slate-500 group-hover:text-slate-700",
+                    itemIsActive ? "text-blue-600" : "text-slate-500 group-hover:text-slate-700",
                     collapsed ? "h-5 w-5" : "h-5 w-5"
                   )} />
                   
@@ -204,13 +204,13 @@ export function ModernSidebar({ collapsed = false, onToggleCollapse }: ModernSid
                               "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-all duration-200 group text-sm",
                               "hover:bg-slate-50/60",
                               subIsActive 
-                                ? "bg-teal-50/60 text-teal-700 font-medium" 
+                                ? "bg-blue-50/60 text-blue-700 font-medium" 
                                 : "text-slate-500 hover:text-slate-700"
                             )}
                           >
                             <SubIcon className={cn(
                               "h-4 w-4 flex-shrink-0 transition-colors duration-200",
-                              subIsActive ? "text-teal-600" : "text-slate-400 group-hover:text-slate-600"
+                              subIsActive ? "text-blue-600" : "text-slate-400 group-hover:text-slate-600"
                             )} />
                             <span>{subItem.label}</span>
                           </button>

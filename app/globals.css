@@ -10,7 +10,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.65 0.12 195);
+  --primary: #0f44e1;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -46,7 +46,7 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.145 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.65 0.12 195);
+  --primary: #0f44e1;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
@@ -141,96 +141,11 @@
     animation: shake 0.4s ease-in-out;
   }
 
-  @keyframes lightning-zigzag-vertical {
-    0%   { transform: translate(0, -100%); }
-    25%  { transform: translate(8px, -50%); }
-    50%  { transform: translate(-8px, 0%); }
-    75%  { transform: translate(8px, 50%); }
-    100% { transform: translate(0, 100%); }
-  }
+  /* removed zigzag animations */
 
-  @keyframes lightning-zigzag-horizontal {
-    0%   { transform: translate(-100%, 0); }
-    25%  { transform: translate(-50%, 6px); }
-    50%  { transform: translate(0%, -6px); }
-    75%  { transform: translate(50%, 6px); }
-    100% { transform: translate(100%, 0); }
-  }
+  /* removed staircase animations */
 
-  @keyframes lightning-zigzag-diagonal {
-    0%   { transform: translate(-100%, -100%) translateX(0); }
-    25%  { transform: translate(-50%, -50%) translateX(-10px); }
-    50%  { transform: translate(0%, 0%) translateX(10px); }
-    75%  { transform: translate(50%, 50%) translateX(-10px); }
-    100% { transform: translate(100%, 100%) translateX(0); }
-  }
-
-  .animate-lightning-zigzag-vertical {
-    animation: lightning-zigzag-vertical 6s linear infinite;
-  }
-
-  .animate-lightning-zigzag-horizontal {
-    animation: lightning-zigzag-horizontal 7s linear infinite;
-  }
-
-  .animate-lightning-zigzag-diagonal {
-    animation: lightning-zigzag-diagonal 8s linear infinite;
-  }
-
-  /* Staircase step-flow animations (aligned to ~32px grid) */
-  @keyframes lightning-stair-vertical {
-    0%   { transform: translate(0px, -120%); }
-    10%  { transform: translate(32px, -105%); }
-    20%  { transform: translate(32px, -90%); }
-    30%  { transform: translate(64px, -75%); }
-    40%  { transform: translate(64px, -60%); }
-    50%  { transform: translate(96px, -45%); }
-    60%  { transform: translate(96px, -30%); }
-    70%  { transform: translate(128px, -15%); }
-    80%  { transform: translate(128px, 0%); }
-    90%  { transform: translate(160px, 15%); }
-    100% { transform: translate(160px, 30%); }
-  }
-
-  @keyframes lightning-stair-horizontal {
-    0%   { transform: translate(-120%, 0px); }
-    10%  { transform: translate(-105%, 32px); }
-    20%  { transform: translate(-90%, 32px); }
-    30%  { transform: translate(-75%, 64px); }
-    40%  { transform: translate(-60%, 64px); }
-    50%  { transform: translate(-45%, 96px); }
-    60%  { transform: translate(-30%, 96px); }
-    70%  { transform: translate(-15%, 128px); }
-    80%  { transform: translate(0%, 128px); }
-    90%  { transform: translate(15%, 160px); }
-    100% { transform: translate(30%, 160px); }
-  }
-
-  @keyframes lightning-stair-diagonal {
-    0%   { transform: translate(-120%, -120%); }
-    10%  { transform: translate(-105%, -120%); }
-    20%  { transform: translate(-105%, -105%); }
-    30%  { transform: translate(-90%, -105%); }
-    40%  { transform: translate(-90%, -90%); }
-    50%  { transform: translate(-75%, -90%); }
-    60%  { transform: translate(-75%, -75%); }
-    70%  { transform: translate(-60%, -75%); }
-    80%  { transform: translate(-60%, -60%); }
-    90%  { transform: translate(-45%, -60%); }
-    100% { transform: translate(-45%, -45%); }
-  }
-
-  .animate-lightning-stair-vertical {
-    animation: lightning-stair-vertical 9s steps(12, end) infinite;
-  }
-
-  .animate-lightning-stair-horizontal {
-    animation: lightning-stair-horizontal 10s steps(12, end) infinite;
-  }
-
-  .animate-lightning-stair-diagonal {
-    animation: lightning-stair-diagonal 12s steps(12, end) infinite;
-  }
+  /* removed string path animations */
 
   /* Hide scrollbar while keeping scroll functionality */
   .scrollbar-hide {

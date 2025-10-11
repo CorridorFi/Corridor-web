@@ -28,12 +28,12 @@ export function AppBar() {
         <div className="flex items-center gap-4">
           <Button variant="ghost" size="sm" className="relative">
             <Bell className="h-5 w-5" />
-            <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-teal-500"></span>
+            <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-[#0f44e1]"></span>
           </Button>
 
           <Avatar className="h-8 w-8">
             <AvatarImage src="/avatar.jpg" />
-            <AvatarFallback className="bg-gradient-to-br from-teal-500 to-teal-600 text-xs font-medium text-white">
+            <AvatarFallback className="bg-gradient-to-br from-[#0f44e1] to-[#174ef0] text-xs font-medium text-white">
               JD
             </AvatarFallback>
           </Avatar>

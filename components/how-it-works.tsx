@@ -133,7 +133,7 @@ export default function HowItWorks() {
                       <path
                         d="M 15 85 Q 50 50, 85 15"
                         fill="none"
-                        stroke="#14b8a6"
+                        stroke="#0f44e1"
                         strokeWidth="2"
                         strokeLinecap="round"
                         className="transition-all duration-700"
@@ -154,23 +154,23 @@ export default function HowItWorks() {
                   style={{
                     transform: isHovered ? 'translateY(-12px) scale(1.02)' : 'translateY(0) scale(1)',
                     boxShadow: isHovered 
-                      ? '0 24px 48px rgba(0,0,0,0.08), 0 0 0 1px rgba(20,184,166,0.15)' 
+                      ? '0 24px 48px rgba(0,0,0,0.08), 0 0 0 1px rgba(15,68,225,0.15)' 
                       : '0 2px 12px rgba(0,0,0,0.04)',
                     transition: 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease-out, border-color 0.4s ease-out',
                     zIndex: isHovered ? 51 : 'auto',
-                    borderColor: isHovered ? 'rgba(20,184,166,0.2)' : 'rgb(229, 231, 235)',
+                    borderColor: isHovered ? 'rgba(15,68,225,0.2)' : 'rgb(229, 231, 235)',
                   }}
                 >
-                  {/* Subtle teal glow on hover */}
+                  {/* Subtle primary glow on hover */}
                   <div 
-                    className="absolute -inset-0.5 bg-teal-500/10 rounded-lg blur-sm -z-10 transition-opacity duration-400"
+                    className="absolute -inset-0.5 bg-[#0f44e1]/10 rounded-lg blur-sm -z-10 transition-opacity duration-400"
                     style={{ opacity: isHovered ? 1 : 0 }}
                   />
 
                   {/* Step number - minimal */}
                   <div className="mb-5 flex items-center gap-3">
                     <div 
-                      className="w-9 h-9 rounded-lg bg-gray-300 flex items-center justify-center text-teal-500 font-bold text-base flex-shrink-0 transition-transform duration-400 ease-out"
+                      className="w-9 h-9 rounded-lg bg-gray-300 flex items-center justify-center text-blue-600 font-bold text-base flex-shrink-0 transition-transform duration-400 ease-out"
                       style={{
                         transform: isHovered ? 'scale(1.1) rotate(5deg)' : 'scale(1) rotate(0deg)'
                       }}
@@ -181,7 +181,7 @@ export default function HowItWorks() {
                       className="h-px bg-gray-200 transition-all duration-400"
                       style={{
                         width: '100%',
-                        backgroundColor: isHovered ? 'rgba(20,184,166,0.3)' : 'rgb(229, 231, 235)'
+                        backgroundColor: isHovered ? 'rgba(15,68,225,0.3)' : 'rgb(229, 231, 235)'
                       }}
                     />
                   </div>
@@ -216,7 +216,7 @@ export default function HowItWorks() {
               key={i}
               className={[
                 "h-1 rounded-full transition-all duration-700",
-                visible[i] ? "w-10 bg-teal-500" : "w-1 bg-gray-300"
+                visible[i] ? "w-10 bg-[#0f44e1]" : "w-1 bg-gray-300"
               ].join(" ")}
               style={{ transitionDelay: `${i * 100}ms` }}
             />

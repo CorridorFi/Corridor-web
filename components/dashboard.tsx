@@ -198,8 +198,8 @@ export function Dashboard() {
                     +12.5% from last month
                   </p>
                 </div>
-                <div className="h-12 w-12 bg-teal-100 rounded-lg flex items-center justify-center">
-                  <DollarSign className="h-6 w-6 text-teal-600" />
+                <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <DollarSign className="h-6 w-6 text-blue-600" />
                 </div>
               </div>
             </div>
@@ -267,7 +267,7 @@ export function Dashboard() {
             <div className="space-y-3">
               <div className="flex items-center gap-3 p-3 bg-slate-50/50 rounded-lg">
                 <Avatar className="h-8 w-8">
-                  <AvatarFallback className="bg-teal-100 text-teal-700 text-xs">SA</AvatarFallback>
+                  <AvatarFallback className="bg-blue-100 text-blue-700 text-xs">SA</AvatarFallback>
                 </Avatar>
                 <div className="flex-1">
                   <p className="text-sm font-medium text-slate-900">Sarah Adams completed timesheet</p>
@@ -313,7 +313,7 @@ export function Dashboard() {
             <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-white/50 shadow-xl p-6">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-xl font-semibold text-slate-900">My Company Overview</h3>
-                <DollarSign className="h-6 w-6 text-teal-600" />
+                <DollarSign className="h-6 w-6 text-blue-600" />
               </div>
               
               <div className="grid grid-cols-2 gap-4 mb-6">
@@ -322,7 +322,7 @@ export function Dashboard() {
                   <div className="text-sm text-slate-600">Total Employees</div>
                 </div>
                 <div className="bg-slate-50/80 rounded-xl p-4">
-                  <div className="text-2xl font-bold text-teal-600">Jan 1</div>
+                  <div className="text-2xl font-bold text-blue-600">Jan 1</div>
                   <div className="text-sm text-slate-600">Next Payroll</div>
                 </div>
               </div>
@@ -353,14 +353,14 @@ export function Dashboard() {
             <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-white/50 shadow-xl p-6">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-xl font-semibold text-slate-900">Personal Wallet</h3>
-                <TrendingUp className="h-6 w-6 text-teal-600" />
+                <TrendingUp className="h-6 w-6 text-blue-600" />
               </div>
               
               <div className="mb-6">
                 <div className="text-3xl font-bold text-slate-900 mb-2">$1,250.60</div>
                 <div className="text-sm text-slate-600 flex items-center gap-2">
                   USDC Balance
-                  <Badge variant="secondary" className="bg-teal-100 text-teal-700">
+                  <Badge variant="secondary" className="bg-blue-100 text-blue-700">
                     +2.4% yield
                   </Badge>
                 </div>
