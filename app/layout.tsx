@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: 'Corridor',
     images: [
       {
-        url: '/corridor-landing.png',
+        url: 'https://corridorfi.xyz/corridor-landing.png',
         width: 1200,
         height: 630,
         alt: 'Corridor - Modern Payroll Platform',
