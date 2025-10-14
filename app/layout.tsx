@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Corridor - Pay Your Team. Grow Your Wealth. Automatically.',
     description: 'The only payroll platform with built-in DeFi investing. Unify global payroll and peer-to-peer transfers.',
-    images: ['/corridor-landing.png'],
+    images: ['https://corridorfi.xyz/corridor-landing.png'],
     creator: '@CorridorFi',
     site: '@CorridorFi',
   },
