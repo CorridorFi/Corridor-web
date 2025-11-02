@@ -7,7 +7,7 @@ import HowItWorks from "@/components/how-it-works"
 
 export default function Page() {
   return (
-    <main className="flex flex-col relative bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20 overflow-hidden">
+    <main className="flex flex-col relative bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20">
       {/* Dotted pattern with radial gradient mask (more visible at edges, lighter in center) */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(0,0,0,0.18)_1.5px,_transparent_1.5px)] bg-[length:32px_32px]" />
